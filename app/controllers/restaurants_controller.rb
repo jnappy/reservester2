@@ -48,10 +48,11 @@ class RestaurantsController < ApplicationController
     def destroy 
         @restaurant.destroy
         respond_to do |format|
-            format.html { redirect_to restaurants_url, notice: 'Restaurant was destorys.'}
+            format.html { redirect_to restaurants_url, notice: 'Restaurant was destoryed.'}
             format.json { head :no_content }
         end
     end
+
 
 
 
@@ -65,7 +66,7 @@ class RestaurantsController < ApplicationController
 
 
     def restaurant_params
-        params.require(:restaurant).permit(:name, :description, :address, :phone_number, :picture)
+        params.require(:restaurant).permit(:name, :description, :address, :phone_number, :picture, :menu, :latitude, :longitude)
     end
 
         

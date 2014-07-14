@@ -28,6 +28,17 @@
     <%= image_tag(@restaurant.picture_url, :width => 300) if @restaurant.picture.present? %>
 </p>
 
+<p>
+    <strong>Look at the Menu:<strong>
+    <%= link_to(@restaurant.menu) if @restaurant.menu.present? %>
+
+</p>
+
+<p>
+    <strong>Where's it at?</strong>
+    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=14&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}" %>
+
+</p>
 
 
 
