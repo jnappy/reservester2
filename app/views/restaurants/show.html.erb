@@ -1,0 +1,41 @@
+
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>Name:</strong>
+    <%= @restaurant.name %>
+</p>
+
+<p>
+    <strong>Description:</strong>
+    <%= @restaurant.description %>
+</p>
+
+<p>
+    <strong>Address:</strong>
+    <%= @restaurant.address %>
+</p>
+
+<p>
+    <strong>Phone number:</strong>
+    <%= @restaurant.phone_number %>
+
+</p>
+
+<p>
+
+    <strong>Picture:</strong>
+    <%= image_tag(@restaurant.picture_url, :width => 300) if @restaurant.picture.present? %>
+</p>
+
+
+
+
+
+
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+
+<%= link_to 'Destroy', @restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<p><%= link_to 'Back To All Restaurants', restaurants_path %> </p>
