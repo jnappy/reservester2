@@ -25,15 +25,18 @@
             <td><%= restaurant.address %></td>
             <td><%= image_tag(restaurant.picture_url, :width => 300) if restaurant.picture.present? %> </td>
             <td><%= link_to(restaurant.menu) if restaurant.menu.present? %> </td>
-
-            <td><%= link_to 'Show', restaurant %></td>
+            <% if current_user.present? %>
             <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
             <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <%end%>
+             <td><%= link_to 'Show', restaurant %></td>
+            
         </tr>
         <% end %>
     </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Restaurant', new_restaurant_path %>
+             <% if current_user.present? %>
+            <%= link_to 'New Restaurant', new_restaurant_path %>
+            <%end%>

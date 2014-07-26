@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  
+ 
   resources :restaurants
+
+  devise_for :users, controllers: {registrations: 'registrations'}
 
 root :to => redirect('/restaurants')
   # get 'welcome/index'

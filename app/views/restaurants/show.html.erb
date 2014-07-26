@@ -30,13 +30,22 @@
 
 <p>
     <strong>Look at the Menu:<strong>
-    <%= link_to(@restaurant.menu) if @restaurant.menu.present? %>
+    <%= link_to(@restaurant.menu_url :target => "_blank") if @restaurant.menu.present? %>
+   
 
 </p>
 
 <p>
     <strong>Where's it at?</strong>
     <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=14&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}" %>
+
+</p>
+
+<p>
+    <strong>Owner:</strong>
+    <%= User.find(@restaurant.user_id).first_name %>
+    <%= User.find(@restaurant.user_id).last_name %>
+
 
 </p>
 

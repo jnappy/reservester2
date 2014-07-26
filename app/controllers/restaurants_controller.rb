@@ -1,6 +1,11 @@
 class RestaurantsController < ApplicationController 
+
     before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
-  
+    before_filter :authenticate_user!, :except => [:index, :show]
+    
+
+
+
 
 
     def index
@@ -9,6 +14,8 @@ class RestaurantsController < ApplicationController
 
     def show
     end
+
+
 
     def new
         @restaurant = Restaurant.new 
@@ -19,6 +26,8 @@ class RestaurantsController < ApplicationController
 
     def create
         @restaurant = Restaurant.new(restaurant_params)
+        @restaurant.user_id = current_user.id
+
 
         respond_to do |format|
             if @restaurant.save
@@ -66,7 +75,7 @@ class RestaurantsController < ApplicationController
 
 
     def restaurant_params
-        params.require(:restaurant).permit(:name, :description, :address, :phone_number, :picture, :menu, :latitude, :longitude)
+        params.require(:restaurant).permit(:name, :description, :address, :phone_number, :picture, :menu, :latitude, :longitude, :user_id)
     end
 
         
